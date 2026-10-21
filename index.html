@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#075e54">
+<title>তাহমিদ মৌজা ম্যাপ / খতিয়ান সেবা</title>
+<style>
+:root{--green:#075e54;--green2:#0b806f;--bg:#f2f7f5;--ink:#172b28;--muted:#5d706c;--line:#d8e5e1}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:25px 17px 28px;border-radius:0 0 24px 24px}
+.wrap{max-width:760px;margin:auto;padding:0 14px}header h1{font-size:25px;line-height:1.35;margin:0 0 8px}header p{margin:0;opacity:.94;font-size:14px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.pill{background:#ffffff22;border:1px solid #ffffff55;border-radius:30px;padding:6px 10px;font-size:12px}
+main{padding:16px 0 30px}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:17px;margin-bottom:14px;box-shadow:0 5px 18px #153d3310}
+h2{font-size:18px;margin:0 0 13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin-bottom:12px}.field:last-child{margin-bottom:0}label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+select,input{width:100%;padding:12px 11px;border:1px solid #cbdcd6;border-radius:10px;background:#fff;font:inherit;font-size:14px;color:var(--ink)}input::placeholder{color:#8a9a96}
+small,.hint{font-size:12px;color:var(--muted);line-height:1.55}.radio-row{display:flex;gap:9px;flex-wrap:wrap}.choice{border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:14px;display:flex;align-items:center;gap:7px}.choice input{width:auto;margin:0;accent-color:var(--green)}
+.price{display:flex;align-items:center;justify-content:space-between;background:#eff8f4;border-radius:12px;padding:12px;margin:13px 0}.price strong{font-size:21px;color:var(--green)}
+button,.btn{display:block;width:100%;border:0;border-radius:11px;background:var(--green);color:white;font:inherit;font-weight:750;padding:13px;text-align:center;text-decoration:none;cursor:pointer}
+.secondary{background:#eaf4f0;color:var(--green);margin-top:9px}.services{display:grid;grid-template-columns:1fr 1fr;gap:9px}.service{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px}.service b{display:block;margin-bottom:4px}.footer{text-align:center;padding:12px;color:var(--muted);font-size:12px}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.services{grid-template-columns:1fr 1fr}header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>তাহমিদ মৌজা ম্যাপ / খতিয়ান সেবা</h1>
+<p>সারা বাংলাদেশের মৌজা ম্যাপ, খতিয়ান ও ভূমি-সংক্রান্ত সেবা</p>
+<div class="pills"><span class="pill">PDF / JPG ম্যাপ</span><span class="pill">অনলাইন অর্ডার</span><span class="pill">বিকাশ / নগদ</span></div>
+</div></header>
+<main class="wrap">
+<section class="card">
+<h2>ম্যাপ বা খতিয়ান খুঁজুন</h2>
+<div class="grid">
+<div class="field"><label for="division">বিভাগ</label><select id="division"><option value="">বিভাগ নির্বাচন করুন</option></select></div>
+<div class="field"><label for="district">জেলা</label><select id="district" disabled><option value="">আগে বিভাগ নির্বাচন করুন</option></select></div>
+<div class="field"><label for="upazila">থানা / উপজেলা</label><input id="upazila" list="upazilaHints" placeholder="থানা/উপজেলার নাম লিখুন"><datalist id="upazilaHints"></datalist></div>
+<div class="field"><label for="mouza">মৌজা</label><input id="mouza" list="mouzaHints" placeholder="মৌজার নাম লিখুন"><datalist id="mouzaHints"></datalist></div>
+</div>
+<div class="field"><label>জরিপের ধরন</label><div class="radio-row">
+<label class="choice"><input type="radio" name="survey" value="CS" checked> CS</label>
+<label class="choice"><input type="radio" name="survey" value="SA"> SA</label>
+<label class="choice"><input type="radio" name="survey" value="RS"> RS</label>
+<label class="choice"><input type="radio" name="survey" value="BS/BRS"> BS / BRS</label>
+</div></div>
+<div class="field"><label>যে সেবা চান</label><div class="radio-row">
+<label class="choice"><input type="radio" name="kind" value="মৌজা ম্যাপ PDF/JPG" checked> মৌজা ম্যাপ</label>
+<label class="choice"><input type="radio" name="kind" value="খতিয়ান"> খতিয়ান</label>
+<label class="choice"><input type="radio" name="kind" value="অন্যান্য ভূমি সেবা"> অন্যান্য</label>
+</div></div>
+<div class="price"><div><b>প্রতি PDF/JPG ম্যাপ</b><div class="hint">খতিয়ানের মূল্য আলাদাভাবে নিশ্চিত করুন</div></div><strong>৳ ১০০</strong></div>
+<button onclick="sendOrder()">WhatsApp-এ অর্ডার দিন</button>
+<a class="btn secondary" href="https://wa.me/8801975926426" target="_blank" rel="noopener">অর্ডার সহায়তা: ০১৯৭৫৯২৬৪২৬</a>
+<p class="hint">পেমেন্ট নম্বর অর্ডার নিশ্চিত করার সময় জানানো হবে। কোনো পেমেন্ট করার আগে সেবা ও মূল্য নিশ্চিত করুন।</p>
+</section>
+
+<section class="card">
+<h2>মৌজা ম্যাপ ও খতিয়ান</h2>
+<p class="hint">আপনার দেওয়া লিংক থেকে মৌজা ম্যাপ দেখুন এবং মৌজা-ভিত্তিক খতিয়ান বইয়ের জন্য নিচের বাটন ব্যবহার করুন।</p>
+<a class="btn" href="https://drive.google.com/drive/folders/1_om3kWrdgXe5NRsz1scWFx6dZfoGUxX_" target="_blank" rel="noopener">🗺️ মৌজা ম্যাপ খুলুন (Google Drive)</a>
+<a class="btn secondary" href="https://eporcha.tech/mouza-vittik-khatian" target="_blank" rel="noopener">📘 মৌজা-ভিত্তিক খতিয়ান খুলুন</a>
+<p class="hint">নোট: Google Drive-এর ফাইল দেখতে/ডাউনলোড করতে ফোল্ডারের শেয়ারিং অনুমতি চালু থাকতে হবে। eporcha.tech-এর খতিয়ান সেবা তাদের নিজস্ব ওয়েবসাইটে খুলবে।</p>
+</section>
+<section class="card"><h2>আমাদের সেবাসমূহ</h2><div class="services">
+<div class="service"><b>🗺️ মৌজা ম্যাপ</b>PDF / JPG ফাইল</div>
+<div class="service"><b>📘 খতিয়ান সেবা</b>খতিয়ান খোঁজা ও উত্তোলনে সহায়তা</div>
+<div class="service"><b>🔎 দাগ / খতিয়ান অনুসন্ধান</b>প্রদত্ত তথ্য অনুযায়ী সহায়তা</div>
+<div class="service"><b>🧾 নামজারি সহায়তা</b>আবেদন-সংক্রান্ত সহায়তা</div>
+</div></section>
+<section class="card"><h2>অটো নির্বাচন সম্পর্কে</h2><p class="hint">বিভাগ নির্বাচন করলে সংশ্লিষ্ট জেলার তালিকা অটো দেখাবে। থানা/উপজেলা ও মৌজার ঘরে নাম লিখলে নমুনা সাজেশন দেখা যেতে পারে। সারা বাংলাদেশের সব থানা ও মৌজার পূর্ণ, যাচাইকৃত ডেটাবেস এই ডেমোতে যুক্ত নেই—সঠিক অটো-সার্চ চালু করতে পূর্ণ ডেটাবেস প্রয়োজন।</p></section>
+<div class="footer">তাহমিদ ভূমি সেবা • মোবাইল: ০১৯৭৫৯২৬৪২৬<br>এটি মোবাইলে চালানোর ওয়েব-অ্যাপ ডেমো; ইনস্টলযোগ্য APK নয়।</div>
+</main>
+<script>
+const data = {
+"ঢাকা":["ঢাকা","গাজীপুর","গোপালগঞ্জ","কিশোরগঞ্জ","মাদারীপুর","মানিকগঞ্জ","মুন্সীগঞ্জ","নারায়ণগঞ্জ","নরসিংদী","রাজবাড়ী","শরীয়তপুর","ফরিদপুর","টাঙ্গাইল"],
+"চট্টগ্রাম":["চট্টগ্রাম","কক্সবাজার","কুমিল্লা","খাগড়াছড়ি","চাঁদপুর","ফেনী","ব্রাহ্মণবাড়িয়া","বান্দরবান","লক্ষ্মীপুর","নোয়াখালী","রাঙামাটি"],
+"রাজশাহী":["রাজশাহী","চাঁপাইনবাবগঞ্জ","নওগাঁ","নাটোর","পাবনা","বগুড়া","জয়পুরহাট","সিরাজগঞ্জ"],
+"খুলনা":["খুলনা","কুষ্টিয়া","চুয়াডাঙ্গা","ঝিনাইদহ","যশোর","নড়াইল","বাগেরহাট","মাগুরা","মেহেরপুর","সাতক্ষীরা"],
+"বরিশাল":["বরিশাল","বরগুনা","ভোলা","ঝালকাঠি","পটুয়াখালী","পিরোজপুর"],
+"সিলেট":["সিলেট","মৌলভীবাজার","হবিগঞ্জ","সুনামগঞ্জ"],
+"রংপুর":["রংপুর","দিনাজপুর","গাইবান্ধা","কুড়িগ্রাম","লালমনিরহাট","নীলফামারী","পঞ্চগড়","ঠাকুরগাঁও"],
+"ময়মনসিংহ":["ময়মনসিংহ","জামালপুর","নেত্রকোণা","শেরপুর"]
+};
+const division=document.getElementById('division'), district=document.getElementById('district');
+Object.keys(data).forEach(d=>division.add(new Option(d,d)));
+division.addEventListener('change',()=>{district.innerHTML='<option value="">জেলা নির্বাচন করুন</option>';(data[division.value]||[]).forEach(d=>district.add(new Option(d,d)));district.disabled=!division.value;});
+const upHints={"লক্ষ্মীপুর":["রায়পুর","লক্ষ্মীপুর সদর","রামগঞ্জ","কমলনগর","রামগতি"],"নোয়াখালী":["বেগমগঞ্জ","সোনাইমুড়ী","চাটখিল","কোম্পানীগঞ্জ"],"ঢাকা":["সাভার","ধামরাই","কেরানীগঞ্জ","দোহার","নবাবগঞ্জ"]};
+const mouzaHints=["চর আবাবিল","উত্তর চর বংশী","দক্ষিণ চর বংশী","রায়পুর","চরপাতা","কেরোয়া"];
+district.addEventListener('change',()=>{const dl=document.getElementById('upazilaHints');dl.innerHTML='';(upHints[district.value]||[]).forEach(v=>dl.append(new Option(v,v)));});
+document.getElementById('upazila').addEventListener('input',()=>{const dl=document.getElementById('mouzaHints');dl.innerHTML='';mouzaHints.forEach(v=>dl.append(new Option(v,v)));});
+function sendOrder(){
+ const survey=document.querySelector('input[name="survey"]:checked').value;
+ const kind=document.querySelector('input[name="kind"]:checked').value;
+ const msg=`তাহমিদ মৌজা ম্যাপ / খতিয়ান সেবা অর্ডার%0Aবিভাগ: ${division.value||'দেওয়া হয়নি'}%0Aজেলা: ${district.value||'দেওয়া হয়নি'}%0Aথানা/উপজেলা: ${document.getElementById('upazila').value||'দেওয়া হয়নি'}%0Aমৌজা: ${document.getElementById('mouza').value||'দেওয়া হয়নি'}%0Aজরিপ: ${survey}%0Aসেবা: ${kind}%0Aম্যাপের মূল্য: ১০০ টাকা (প্রযোজ্য হলে)`;
+ window.open('https://wa.me/8801975926426?text='+msg,'_blank');
+}
+</script>
+</body></html>
